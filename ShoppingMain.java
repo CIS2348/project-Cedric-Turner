@@ -1,6 +1,4 @@
-
-
-// package view;
+package view;
 
 import java.awt.EventQueue;
 import java.io.IOException;
@@ -11,16 +9,13 @@ import java.util.List;
 import java.util.Scanner;
 
 import model.Item;
-import view.ShoppingFrame;
 
 public final class ShoppingMain {
 
     private static final String ITEM_FILE = "items.txt";
 
-
     private ShoppingMain() {
     }
-
 
     private static List<Item> readItemsFromFile() {
         final List<Item> items = new LinkedList<>();

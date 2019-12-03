@@ -1,6 +1,4 @@
-
-
-// package model;
+package model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -9,43 +7,35 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 
+
 public class ShoppingCart {
 
     // constants (static final fields)
 
-    /** A percentage value for discount item. */
     private static final BigDecimal DISCOUNT_RATE = new BigDecimal(".10");
 
 
     //instance fields
 
-    /** The shopping cart. */
-    private Map<model.Item, BigDecimal> myShoppingCart;
+    private Map<Item, BigDecimal> myShoppingCart;
 
-    /** The item order. */
     //private ItemOrder myOrder;
 
-    /** The order total. */
     //private BigDecimal myOrderTotal;
 
-    /** The membership status. */
     private boolean myMembership;
 
 
     // constructors
 
-    /**
-     * Constructor that creates an empty shopping cart.
-     */
     public ShoppingCart() {
-        myShoppingCart =  new HashMap<model.Item, BigDecimal>();
+        myShoppingCart =  new HashMap<Item, BigDecimal>();
     }
 
     public void add(final ItemOrder theOrder) {
         Objects.requireNonNull(theOrder, "theOrder can't be null!");
         myShoppingCart.put(theOrder.getItem(), theOrder.calculateOrderTotal());
     }
-
 
     public void setMembership(final boolean theMembership) {
         myMembership = theMembership;
@@ -54,7 +44,7 @@ public class ShoppingCart {
     public BigDecimal calculateTotal() {
         BigDecimal orderTotal = BigDecimal.ZERO;
 
-        final Iterator<model.Item> iterator = myShoppingCart.keySet().iterator();
+        final Iterator<Item> iterator = myShoppingCart.keySet().iterator();
 
         while (iterator.hasNext()) {
             final BigDecimal currentOrderPrice = myShoppingCart.get(iterator.next());
@@ -73,11 +63,8 @@ public class ShoppingCart {
         return orderTotal.setScale(2, RoundingMode.HALF_EVEN);
     }
 
-    /**
-     * Removes all orders from the cart.
-     */
     public void clear() {
-        myShoppingCart =  new HashMap<model.Item, BigDecimal>();
+        myShoppingCart =  new HashMap<Item, BigDecimal>();
     }
 
     @Override

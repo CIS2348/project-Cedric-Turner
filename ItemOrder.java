@@ -1,6 +1,4 @@
-// package model;
-
-import model.Item;
+package model;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -9,11 +7,9 @@ public final class ItemOrder {
 
     //instance fields
 
-    /** The product item. */
     private final Item myItem;
-    private int myQuantity;
 
-    /** The product quantity. */
+    private final int myQuantity;
 
     public ItemOrder(final Item theItem, final int theQuantity) {
 
@@ -25,24 +21,19 @@ public final class ItemOrder {
         myQuantity = theQuantity;
     }
 
-    public ItemOrder(Item theItem, int number, Item myItem, int myQuantity) {
-        this.myItem = myItem;
-        this.myQuantity = myQuantity;
-    }
-
 
     //instance methods
-    
+
     public BigDecimal calculateOrderTotal() {
 
         return myItem.calculateItemTotal(myQuantity);
     }
 
-    
+
     public Item getItem() {
         return myItem;
     }
-    
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder(22);
